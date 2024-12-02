@@ -1,0 +1,84 @@
+.gamer-registration-page {
+	display: flex;
+	flex-direction: column;
+}
+
+.gamer-registration-page-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100px;
+	color: white;
+	font-weight: bold;
+	background-color:rgb(0, 128, 192);
+}
+
+mat-grid-list.gamer-registration {
+	height: calc(100vh - 100px);
+}
+
+/*mat-grid-tile.gamer-registration-top {
+	height: 100%;
+}
+
+mat-grid-tile.gamer-registration-bottom {
+	height: 150px;	
+}*/
+
+mat-card.gamer-registration {
+	width:100%;
+	height: 100%;
+}
+
+mat-card.gamer-registration-footer {
+	width:100%;
+	height: 150px;
+}
+
+mat-card-header.gamer-registration {
+	justify-content: center;
+	background-color: lightgrey;
+	border: 2px solid grey;	
+	margin: 15px 10px 5px 10px;
+	height: 50px;
+}
+
+mat-card-content.gamer-registration {
+	margin-top: 10px;
+}
+
+.gamer-registration-page-game-form {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+mat-card-actions.gamer-registration {
+	display: flex;
+	justify-content: center;
+	height: 50px; 
+}
+
+mat-card-actions.gamer-registration-button {
+	display: flex;
+	justify-content: center;
+	height: 50px; 
+	margin-right: 35px;
+}
+
+mat-card-content.gamer-list {
+	margin-top: 5px;
+}
+
+mat-selection-list.gamer-registration {
+  max-height: 250px;
+  overflow: auto;
+}
+
+.gamer-list-item {
+	display: flex;
+	justify-content: center;
+	column-gap: 5px;
+}

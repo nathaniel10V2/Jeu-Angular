@@ -1,0 +1,95 @@
+<div class="jeu-memoire-game">
+	<div class="jeu-memoire-game-header">
+		<h1>{{title}}</h1>
+	</div>
+	<mat-grid-list cols="3"> 
+		<mat-grid-tile>
+			<mat-card class="jeu-memoire-game">
+				<mat-card-header>
+					<mat-card-title>Numéro Disponibles</mat-card-title> 
+				</mat-card-header> 
+				<mat-card-content class="jeu-memoire-game-list"> 
+					@if (fruits) { 
+					<mat-list>
+						@for (f of fruits; track f; let index = $index) { 
+							<mat-list-item>{{index}}-</mat-list-item>
+						} 
+					</mat-list> 
+					} 
+				</mat-card-content> 
+				<mat-card-actions>
+					<button mat-raised-button color="primary" (click)="retour()" [disabled]="gameTerminated()">Retour</button>
+				</mat-card-actions> 
+			</mat-card> 
+		</mat-grid-tile> 
+		<mat-grid-tile [formGroup]="jeuMemoireGameForm">
+			<div class="jeu-memoire-gamer-turn">
+				<mat-card class="jeu-memoire-game-group-selection"> 
+					<mat-card-header class="jeu-memoire-game"> 
+						<mat-card-title>Tour du joueur</mat-card-title> 
+							@if (activeGamer){ 
+								<mat-card-subtitle class="jeu-memoire-game-text-subtitle">{{activeGamer.name}}</mat-card-subtitle>
+							} 
+					</mat-card-header> 
+					<mat-card-content class="jeu-memoire-game-content">
+						<mat-form-field appearance="outline"> 
+							<mat-label>Premier numéro</mat-label> 
+							<input matInput formControlName="firstNumber" placeholder="Premier numéro"> 
+						</mat-form-field> 
+						<mat-form-field appearance="outline"> 
+							<mat-label>Deuxième numéro</mat-label> 
+							<input matInput formControlName="secondNumber" placeholder="Deuxième numéro"> 
+						</mat-form-field> 
+					</mat-card-content> 
+					<mat-card-actions class="jeu-memoire-game-button">
+						<button type="button" mat-raised-button color="primary" (click)="nextGamer()" [disabled]="gameTerminated()">Joueur Suivant</button>
+					</mat-card-actions> 
+				</mat-card>
+				<mat-card class="jeu-memoire-game-group"> 
+					<mat-card-header class="jeu-memoire-game"> 
+						<mat-card-title>Joueur précédéent</mat-card-title> 
+							@if (previousGamer){ 
+								<mat-card-subtitle class="jeu-memoire-game-text-subtitle">{{previousGamer.name}}</mat-card-subtitle>
+							} 
+					</mat-card-header> 
+					<mat-card-content class="jeu-memoire-game-content">
+						<div class="jeu-memoire-gamer-selection">
+							<div class="jeu-memoire-game-text">Fruits Sélectionnés</div>
+							<p></p>
+							<span class="jeu-memoire-game-text-subtitle">{{premierFruit}}</span>
+							<p></p>
+							<span class="jeu-memoire-game-text-subtitle">{{deuxiemeFruit}}</span>
+						</div>
+					</mat-card-content> 
+				</mat-card>
+			</div>
+		</mat-grid-tile> 
+		<mat-grid-tile> 
+			<mat-card class="jeu-memoire-game">
+				<mat-card-header class="jeu-memoire-game"> 
+					<mat-card-title>Score des joueurs</mat-card-title> 
+				</mat-card-header> 
+				<mat-card-content class="jeu-memoire-game-content">
+					@if (gamerList){ 
+						<mat-list> 
+							@for (gamer of gamerList; track gamer) { 
+								<mat-list-item>
+									<div class="gamer-list-item">
+										<mat-icon mat-list-icon>person</mat-icon>
+										<div mat-line>{{gamer.name}} = {{gamer.score}}</div>
+									</div>
+								</mat-list-item> 
+							} 
+						</mat-list>
+						<div class="jeu-memoire-game-message">{{messageFinal}}</div>
+					} 
+				</mat-card-content>
+				<div class="jeu-memoire-game-button">
+					<mat-card-actions>
+						<button mat-raised-button color="primary" (click)="replay()" [disabled]="!gameTerminated()">ReJouer</button>
+					</mat-card-actions>
+				</div>
+			</mat-card> 
+		</mat-grid-tile> 
+	</mat-grid-list>
+</div>

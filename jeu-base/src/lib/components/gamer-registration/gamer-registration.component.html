@@ -1,0 +1,40 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+	<div class="gamer-registration-page">
+		<div class="gamer-registration-page-header">
+			<h1>{{title}}</h1>
+		</div>
+		<mat-grid-list class="gamer-registration" cols="2" rowHeight="fit">
+		<mat-grid-tile class="gamer-registration-top" rowspan="3">
+		<mat-card class="gamer-registration"> <mat-card-header
+			class="gamer-registration"> <mat-card-title>Saisissez
+		le nom du joueur</mat-card-title> </mat-card-header> <mat-card-content class="gamer-registration">
+		<div class="gamer-registration-page-game-form">
+			<mat-form-field appearance="outline"> <mat-label>Joueur</mat-label>
+			<input matInput formControlName="name" placeholder="Nom du joueur">
+			<mat-icon matPrefix>person</mat-icon> </mat-form-field>
+		</div>
+		</mat-card-content> <mat-card-actions class="gamer-registration">
+		<button type="submit" mat-raised-button color="primary">Enregistrer</button>
+		</mat-card-actions> </mat-card> </mat-grid-tile> <mat-grid-tile class="gamer-registration-top" rowspan="3">
+		<mat-card class="gamer-registration"> <mat-card-header
+			class="gamer-registration"> <mat-card-title>Liste
+		des joueurs</mat-card-title> </mat-card-header> <mat-card-content class="gamer-list">
+		@if (gamerList) { <mat-selection-list class="gamer-registration"
+			#gamerSelection> @for (gamer of gamerList; track
+		gamer.name) { <mat-list-option [value]="gamer">
+		<div class="gamer-list-item">
+			<mat-icon mat-list-icon>person</mat-icon>
+			<div mat-line>{{gamer.name}}</div>
+		</div>
+		</mat-list-option> } </mat-selection-list> } </mat-card-content> <mat-card-actions class="gamer-registration-button">
+		<button type="button" mat-raised-button color="primary"
+			(click)="deleteGamer()" [disabled]="!isGamerSelected()">Supprimer</button>
+		</mat-card-actions> </mat-card> </mat-grid-tile> <mat-grid-tile class="gamer-registration-bottom" colspan="2">
+		<mat-card class="gamer-registration-footer"> <mat-card-header
+			class="gamer-registration"> <mat-card-title>Demarrer
+		le jeu</mat-card-title> </mat-card-header> <mat-card-actions class="gamer-registration">
+		<button type="button" mat-raised-button color="primary"
+			(click)="startPlay()" [disabled]="!isCanPlay()">Jouer</button>
+		</mat-card-actions> </mat-card> </mat-grid-tile> </mat-grid-list>
+	</div>
+</form>

@@ -1,0 +1,39 @@
+<div class="jeu-hasard-game">
+	<div class="jeu-hasard-game-header">
+		<h1>{{title}}</h1>
+	</div>
+	<mat-grid-list class="jeu-hasard-game" cols="2" rowHeight="fit">
+	<mat-grid-tile rowspan="2"> <mat-card
+		class="jeu-hasard-game"> <mat-card-header
+		class="jeu-hasard-game"> <mat-card-title
+		class="jeu-hasard-game">Tour du joueur</mat-card-title> @if
+	(activeGamer){ <mat-card-subtitle class="jeu-hasard-game-text-subtitle">{{activeGamer.name}}</mat-card-subtitle>
+	} </mat-card-header> <mat-card-content class="jeu-hasard-game-image">
+	<img mat-card-image [ngSrc]="imageURL" alt="Image d'un Dé" width="200"
+		height="200" priority> </mat-card-content> <mat-card-actions
+		class="jeu-hasard-game-button">
+	<button mat-raised-button color="primary" (click)="nextGamer()"
+		[disabled]="gameTerminated()">Joueur Suivant</button>
+	<button mat-raised-button color="primary" (click)="gameTurn()"
+		[disabled]="isPlay()">Lancer le Dé</button>
+	</mat-card-actions> </mat-card> </mat-grid-tile> <mat-grid-tile rowspan="2"> <mat-card
+		class="jeu-hasard-game"> <mat-card-header
+		class="jeu-hasard-game"> <mat-card-title
+		class="jeu-hasard-game">Score des joueurs</mat-card-title> <mat-card-subtitle
+		class="jeu-hasard-game-text-subtitle">Liste des
+	joueurs</mat-card-subtitle> </mat-card-header> <mat-card-content class="jeu-hasard-game-content">
+	@if (gamerList){ <mat-list> @for (gamer of gamerList; track
+	gamer) { <mat-list-item>
+	<div class="gamer-list-item">
+		<mat-icon mat-list-icon>person</mat-icon>
+		<div mat-line>{{gamer.name}} = {{gamer.score}}</div>
+	</div>
+	</mat-list-item> } </mat-list>
+	<div class="jeu-hasard-game-message">{{messageFinal}}</div>
+	} </mat-card-content> <mat-card-actions class="jeu-hasard-game-button">
+	<button mat-raised-button color="primary" (click)="retour()"
+		[disabled]="gameTerminated()">Retour</button>
+	<button mat-raised-button color="primary" (click)="replay()"
+		[disabled]="!gameTerminated()">ReJouer</button>
+	</mat-card-actions> </mat-card> </mat-grid-tile> </mat-grid-list>
+</div>
