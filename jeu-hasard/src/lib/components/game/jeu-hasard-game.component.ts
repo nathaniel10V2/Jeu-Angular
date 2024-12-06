@@ -5,9 +5,10 @@ import { Gamer } from 'jeu-base';
 import { JeuHasardService } from '../../services/jeu-hasard.service';
 
 @Component({
-  selector: 'lib-jeu-hasard',
-  templateUrl: `./jeu-hasard-game.component.html`,
-  styleUrl: `./jeu-hasard-game.component.scss`
+    selector: 'lib-jeu-hasard',
+    templateUrl: `./jeu-hasard-game.component.html`,
+    styleUrl: `./jeu-hasard-game.component.scss`,
+    standalone: false
 })
 export class JeuHasardGameComponent {
 

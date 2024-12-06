@@ -6,9 +6,10 @@ import { Gamer } from 'jeu-base';
 import { JeuMemoireService } from '../../services/jeu-memoire.service';
 
 @Component({
-  selector: 'jeu-memoire-game',
-  templateUrl: `./jeu-memoire-game.component.html`,
-  styleUrl: `./jeu-memoire-game.component.scss`
+    selector: 'jeu-memoire-game',
+    templateUrl: `./jeu-memoire-game.component.html`,
+    styleUrl: `./jeu-memoire-game.component.scss`,
+    standalone: false
 })
 export class JeuMemoireGameComponent implements OnInit {
 	

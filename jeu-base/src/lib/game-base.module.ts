@@ -7,7 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterOutlet, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { GamerRegistrationComponent } from './components/gamer-registration/gamer-registration.component';
@@ -29,7 +29,6 @@ const components = [
 	MatGridListModule,
 	MatCardModule,
 	MatButtonModule,
-	RouterOutlet, 
 	RouterModule,
 	ReactiveFormsModule
   ],

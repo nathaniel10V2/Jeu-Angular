@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { JeuMemoireService } from '../../services/jeu-memoire.service';
 
 @Component({
-  selector: 'lib-jeu-memoire',
-  templateUrl: `./jeu-memoire-gamer.component.html`,
+    selector: 'lib-jeu-memoire',
+    templateUrl: `./jeu-memoire-gamer.component.html`,
+    standalone: false
 })
 export class JeuMemoireGamerComponent {
 	

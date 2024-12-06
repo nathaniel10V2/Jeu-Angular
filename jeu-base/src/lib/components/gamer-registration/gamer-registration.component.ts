@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSelectionList } from '@angular/material/list';
 
@@ -7,9 +7,10 @@ import { GameBaseService } from '../../services/game-base.service';
 import { Gamer } from '../../models/gamer';
 
 @Component({
-  selector: 'gamer-registration',
-  templateUrl: './gamer-registration.component.html',
-  styleUrl: './gamer-registration.component.scss'
+    selector: 'gamer-registration',
+    templateUrl: './gamer-registration.component.html',
+    styleUrl: './gamer-registration.component.scss',
+    standalone: false
 })
 export class GamerRegistrationComponent implements OnInit {
 	
@@ -27,7 +28,6 @@ export class GamerRegistrationComponent implements OnInit {
 	 	
 	constructor(private formBuilder: FormBuilder, 
 				private router: Router) {
-		
 		this.registrationForm = this.formBuilder.group({
 			name: ['', [Validators.required]]
 		});
