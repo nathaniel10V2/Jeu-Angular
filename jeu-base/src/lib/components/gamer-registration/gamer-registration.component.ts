@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSelectionList } from '@angular/material/list';
 
@@ -13,33 +13,42 @@ import { Gamer } from '../../models/gamer';
     standalone: false
 })
 export class GamerRegistrationComponent implements OnInit {
-	
-  	@Input() title: string|undefined;
 
+	@Input() title: string|undefined;
+	/**
+	 * Reçoit un service externe pour gérer les données liées aux joueurs.
+	 */
 	@Input() gameService: GameBaseService|undefined|null;
-	
+
 	@Input() gameLink: string|undefined;
-	
+	/**
+	 * Lie une liste de sélection (Angular Material) dans le template à cette propriété pour manipuler les joueurs sélectionnés.
+	 */
 	@ViewChild('gamerSelection') selectionList: MatSelectionList|undefined;
 	
 	registrationForm: FormGroup;
 	
 	gamerList: Array<Gamer>|undefined;
 	 	
-	constructor(private formBuilder: FormBuilder, 
-				private router: Router) {
+	constructor(private formBuilder: FormBuilder, private router: Router) {
 		this.registrationForm = this.formBuilder.group({
 			name: ['', [Validators.required]]
 		});
 		
 	}
-	
+
 	ngOnInit(): void {
 		if (this.gameService != null) {
 			this.gamerList = this.gameService.getGamerList();
 		}
 	}
-	
+	/**
+	 * Vérifie si le champ name est valide et contient une valeur.
+	 * 
+	 * Ajoute un nouveau joueur à la liste en appelant newGamer du gameService.
+	 * 
+	 * Réinitialise le champ name après l'ajout.
+	 */
 	onSubmit(): void {
 		let gamerNameControl = this.registrationForm.get('name');
 		if (gamerNameControl != null) {
@@ -51,7 +60,13 @@ export class GamerRegistrationComponent implements OnInit {
 			} 
 		}
 	}
-	
+	/**
+	 * Récupère les joueurs sélectionnés via selectionList.
+	 * 
+	 * Appelle deleteGamer pour chaque joueur sélectionné dans le gameService.
+	 * 
+	 * Met à jour la liste des joueurs après suppression en appelant getGamerList.
+	 */
 	deleteGamer(){
 		if (this.selectionList && this.gameService) {
 	    	const selected: Gamer[] = this.selectionList.selectedOptions.selected.map(s => s.value);			

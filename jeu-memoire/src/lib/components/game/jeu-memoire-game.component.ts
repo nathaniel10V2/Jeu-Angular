@@ -66,7 +66,10 @@ export class JeuMemoireGameComponent implements OnInit {
 		this.activeGamer = null;		
 		this.router.navigateByUrl("/jeu-memoire/gamer");
 	}
-	
+	/**
+	 * La méthode nextGamer gère le passage au prochain joueur dans un jeu de mémoire. Elle effectue les vérifications nécessaires sur les nombres sélectionnés par le joueur actif, met à jour l'état du jeu et vérifie si le jeu est terminé. 
+	 * Elle ajuste également les fruits associés et réinitialise les champs du formulaire.
+	 */
 	nextGamer(){
 		if (this.jeuMemoireService){
 			if (this.jeuMemoireService.checkNumber(this.getFirstNumber())== null){

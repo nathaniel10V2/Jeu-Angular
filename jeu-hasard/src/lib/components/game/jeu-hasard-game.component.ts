@@ -43,8 +43,7 @@ export class JeuHasardGameComponent {
 		if (this.diceValue > 0){
 			return true;			
 		}
-		return false;
-		console.log("diceValue% = " + this.diceValue);				
+		return false;			
 	}
 
 	retour(): void {

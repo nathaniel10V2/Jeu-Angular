@@ -43,7 +43,9 @@ export abstract class GameBaseService {
 	public resetActiveGamer(): void {
 		this.activeGamer = null;		
 	}
-
+/**
+ * Renvoie le joueur suivant dans la liste des joueurs. Si l'utilisateur actif est le dernier de la liste, la méthode retourne au premier joueur.
+ */
     public nextGamer(): Gamer|undefined|null {
         if (this.activeGamer != null) {
             let index = this.gamerList.indexOf(this.activeGamer);

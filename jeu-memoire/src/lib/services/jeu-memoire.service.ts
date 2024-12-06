@@ -68,7 +68,13 @@ export class JeuMemoireService extends GameBaseService{
             return message;
         }
 	}
-	
+	/**
+	 * La méthode gamerPlay gère le tour de jeu du joueur actif. Elle vérifie si les numéros sélectionnés correspondent à deux fruits identiques. Si c'est le cas, le joueur gagne un point, les fruits sont retirés de la liste, et celle-ci est mélangée. 
+	 * Si les numéros sont identiques, un message d'erreur est retourné. Elle vérifie également si le jeu est terminé.
+	 * @param premierNumero 
+	 * @param deuxiemeNumero 
+	 * @returns 
+	 */
 	public gamerPlay(premierNumero: any, deuxiemeNumero: any): string|null {
 		if (this.fruits.length > 0){
 			if (premierNumero == deuxiemeNumero){
